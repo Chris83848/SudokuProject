@@ -87,7 +87,12 @@ public class test {
                 {3, 4, 5, 2, 8, 6, 1, 7, 9}
         };
 
-        int[][] easyPuzzle = createPuzzle(solvedGrid, "easy");
+
+        int[][] board = SudokuBoardGenerator.generateMediumBoardPuzzle();
+        SudokuUtils.printBoard(board);
+        SudokuUtils.printBoard(SudokuSolverApplication.solveRecursively(board));
+
+        /*int[][] easyPuzzle = createPuzzle(solvedGrid, "easy");
         System.out.println("Easy Puzzle:");
         printGrid(easyPuzzle);
 
@@ -98,6 +103,8 @@ public class test {
         int[][] hardPuzzle = createPuzzle(solvedGrid, "hard");
         System.out.println("\nHard Puzzle:");
         printGrid(hardPuzzle);
+
+         */
     }
 }
 

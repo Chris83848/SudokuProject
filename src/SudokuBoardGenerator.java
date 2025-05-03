@@ -4,7 +4,7 @@ public class SudokuBoardGenerator {
 
     public static void main(String[] args) {
         int[][] testBoard = generateMediumBoardPuzzle();
-        SudokuBoard.printBoard(testBoard);
+        SudokuUtils.printBoard(testBoard);
 
     }
 
@@ -59,7 +59,7 @@ public class SudokuBoardGenerator {
             baseBoard[symmetricalRow][symmetricalColumn] = 0;
 
             //Test puzzle to ensure solvability and increment emptied cells counter if valid
-            if (!testUniqueness(baseBoard) || !SudokuSolverApplication.boardHumanlySolvable(baseBoard, 1)) {
+            if (!isUnique(baseBoard) || !SudokuSolverApplication.boardHumanlySolvable(baseBoard, 1)) {
                 baseBoard[row][column] = temp1;
                 baseBoard[symmetricalRow][symmetricalColumn] = temp2;
             } else {
@@ -123,7 +123,7 @@ public class SudokuBoardGenerator {
             baseBoard[symmetricalRow][symmetricalColumn] = 0;
 
             //Test puzzle to ensure solvability and increment emptied cells counter if valid
-            if (!testUniqueness(baseBoard) || !SudokuSolverApplication.boardHumanlySolvable(baseBoard, 2)) {
+            if (!isUnique(baseBoard) || !SudokuSolverApplication.boardHumanlySolvable(baseBoard, 2)) {
                 baseBoard[row][column] = temp1;
                 baseBoard[symmetricalRow][symmetricalColumn] = temp2;
             } else {
@@ -219,7 +219,7 @@ public class SudokuBoardGenerator {
 
 
     //This method test if there is only one solution to the given sudoku puzzle.
-    public static boolean testUniqueness(int[][] sudokuBoard) {
+    public static boolean isUnique(int[][] sudokuBoard) {
         int[] numSolutions = {0};
         int[][] board = new int[9][9];
         for (int x = 0; x < board.length; x++) {

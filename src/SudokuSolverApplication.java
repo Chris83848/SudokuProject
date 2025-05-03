@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class SudokuSolverApplication {
-
+    //Replace with SudokuBoard board if possible
     public static int[][] solveRecursively(int[][] sudokuBoard) {
         int[][] solvedBoard = SudokuSolverTechniques.solveRecursivelyHelper(sudokuBoard, 0, 0);
         return solvedBoard;
@@ -54,8 +54,8 @@ public class SudokuSolverApplication {
     }
 
 
-    public static boolean boardHumanlySolvable(int[][] sudokuBoard) {
-        return boardComplete(solveBoardHumanly(sudokuBoard, 3));
+    public static boolean boardHumanlySolvable(int[][] sudokuBoard, int difficultyLevel) {
+        return boardComplete(solveBoardHumanly(sudokuBoard, difficultyLevel));
     }
 
 

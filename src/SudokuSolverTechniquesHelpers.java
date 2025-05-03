@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 public class SudokuSolverTechniquesHelpers {
 
+    // This method places numbers for the recursive solver until it finds a possible one.
     public static boolean placeNumber(int[][] board, int i, int j) {
         if (board[i][j] >= 9) {
             board[i][j] = 0;

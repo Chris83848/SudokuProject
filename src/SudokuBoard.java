@@ -9,44 +9,30 @@ public class SudokuBoard {
     }
 
 
-    public static boolean isValid(int[][] sudokuBoard) {
-        if (SudokuSolverApplication.boardHumanlySolvable(sudokuBoard)) {
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board.length; j++) {
-                    if (board[i][j] != 0) {
-                        if (SudokuSolverApplication.checkBoardError(board, i, j)) {
-                            return false;
-                        }
-                    }
-                }
-            }
+    public static boolean isValid() {
+        if (isSolvable() && isCorrect()) {
             return true;
         } else {
             return false;
         }
     }
 
-
-    //This method prints out the given sudoku board whether it is solved or not.
-    public static void printBoard(int[][] board) {
-        System.out.println("\n-------------------------");
-        for (int i = 0; i < board.length; i++) {
-            System.out.print("| ");
-            for (int j = 0; j < board.length; j++) {
-                System.out.print(board[i][j] + " ");
-                if (j == 2 || j == 5 || j == 8) {
-                    System.out.print("| ");
-                }
-            }
-            if (i == 2 || i == 5) {
-                System.out.println("\n-------------------------");
-            } else {
-                System.out.println();
-            }
-        }
-        System.out.println("-------------------------");
+    public static boolean isSolvable() {
+        return SudokuSolverApplication.boardHumanlySolvable(board, 3);
     }
 
+    public static boolean isCorrect() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (board[i][j] != 0) {
+                    if (SudokuSolverApplication.checkBoardError(board, i, j)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     @Override
     public String toString() {
@@ -69,7 +55,6 @@ public class SudokuBoard {
         result += "-------------------------";
         return result;
     }
-
 
     public int[][] getBoard() {
         return board;

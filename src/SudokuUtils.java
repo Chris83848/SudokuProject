@@ -41,4 +41,24 @@ public class SudokuUtils {
         }
         return false;
     }
+
+    //This method prints out the given sudoku board whether it is solved or not.
+    public static void printBoard(int[][] board) {
+        System.out.println("\n-------------------------");
+        for (int i = 0; i < board.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < board.length; j++) {
+                System.out.print(board[i][j] + " ");
+                if (j == 2 || j == 5 || j == 8) {
+                    System.out.print("| ");
+                }
+            }
+            if (i == 2 || i == 5) {
+                System.out.println("\n-------------------------");
+            } else {
+                System.out.println();
+            }
+        }
+        System.out.println("-------------------------");
+    }
 }
